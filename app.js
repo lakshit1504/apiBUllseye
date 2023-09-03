@@ -19,12 +19,12 @@ app.use(
   session({
     secret: "sdfjksdbfsdfbjssdfbjssdfdsfsdf",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
 
-    cookie: {
-      secure: process.env.NODE_ENV === "development" ? false : true,
-      httpOnly: process.env.NODE_ENV === "development" ? false : true,
-      sameSite: process.env.NODE_ENV === "development" ? false : "none",
+    cookie: { 
+      secure: false,
+      httpOnly: false,
+      sameSite: false,
     },
   })
 );
@@ -39,7 +39,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
    
     
@@ -47,7 +47,7 @@ app.use(
 );
 
 
-app.use(passport.authenticate("session"));
+app.use(passport.session());
 app.use(passport.initialize());
 app.use(passport.session());
 app.enable("trust proxy");

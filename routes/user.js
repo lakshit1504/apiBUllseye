@@ -21,9 +21,9 @@ router.get(
 router.get(
   "/login",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: "https://bullseye-burgers-lakshit.onrender.com/login",
   }),function(req,res){
-    res.redirect("http://localhost:3000")
+    res.redirect("https://bullseye-burgers-lakshit.onrender.com")
     console.log("Response we get", res.user, res.cookies);
   }
 );

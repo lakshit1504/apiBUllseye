@@ -1,6 +1,9 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+// var GoogleStrategy = require('passport-google-oauth20').Strategy;
 import passport from "passport";
 import { User } from "../models/User.js";
+// const findOrCreate = require("mongoose-findorcreate");
+
 
 export const connectPassport = () => {
   passport.use(
@@ -9,6 +12,7 @@ export const connectPassport = () => {
         clientID: "432913184690-kuj801g78tcv3fj6jgkldlf8i3lqre1k.apps.googleusercontent.com",
         clientSecret: "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",
         callbackURL: "http://localhost:4000/api/v1/login",
+        // passReqToCallback: true
       },
       async function (accessToken, refreshToken, profile, done) {
         const user = await User.findOne({
@@ -26,16 +30,20 @@ export const connectPassport = () => {
         } else {
           return done(null, user);
         }
-      }
-    )
+      })
   );
 
-  passport.serializeUser((user, done) => {
-    done(null, user.id);
+  passport.serializeUser((user, cb) => {
+    process.nextTick(function() {
+    return cb(null, {
+      id: user.id,
+    });
+  });
   });
 
-  passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id);
-    done(null, user);
+  passport.deserializeUser(function (user, cb)  {
+    process.nextTick(function() {
+      return cb(null, user);
+    });
   });
 };
