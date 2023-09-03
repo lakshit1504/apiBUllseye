@@ -11,7 +11,7 @@ export const connectPassport = () => {
       {
         clientID: "432913184690-kuj801g78tcv3fj6jgkldlf8i3lqre1k.apps.googleusercontent.com",
         clientSecret: "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",
-        callbackURL: "http://localhost:4000/api/v1/login",
+        callbackURL: "https://bulls-eyeburgers-lw9t8vg4q-lakshit1504.vercel.app/v1/login",
         // passReqToCallback: true
       },
       async function (accessToken, refreshToken, profile, done) {
