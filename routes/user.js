@@ -21,9 +21,9 @@ router.get(
 router.get(
   "/login",
   passport.authenticate("google", {
-    failureRedirect: "https://bullseye-burgers-lakshit.onrender.com/login",
+    failureRedirect: "https://bulls-eyeburgers.vercel.app/login",
   }),function(req,res){
-    res.redirect("https://bullseye-burgers-lakshit.onrender.com")
+    res.redirect("https://bulls-eyeburgers.vercel.app")
     console.log("Response we get", res.user, res.cookies);
   }
 );
