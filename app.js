@@ -39,7 +39,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: "https://bulls-eyeburgers-lw9t8vg4q-lakshit1504.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
    
     
